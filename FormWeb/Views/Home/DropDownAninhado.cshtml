@@ -1,0 +1,64 @@
+@using System.Text.Json
+@model TiposViewModel
+
+@{
+    ViewData["Title"] = "Dropdowns";
+}
+<h>Dropdowns</h>
+<div class="mt-5">
+    <div class="mb-3">
+        <label for="tiposA" class="form-label">Tipos A</label>
+        <select class="form-select" id="tiposA">
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="tiposB" class="form-label">Tipos B</label>
+        <select class="form-select" id="tiposB">
+        </select>
+    </div>
+    <button type="button" class="btn btn-danger" id="clearFilters">Limpar Filtro</button>
+</div>
+@section Scripts {
+    <script>
+        var listaA = JSON.parse('@Html.Raw(JsonSerializer.Serialize(Model.LsTipoAs))');
+        var listaB = JSON.parse('@Html.Raw(JsonSerializer.Serialize(Model.LsTipoBs))');
+        // Carregar ao criar a pagina
+        $(() => {
+            loadLista(listaA,'tiposA')
+            loadLista(listaB,'tiposB')
+        });
+        function loadLista(lista, idSelect){
+            let $option;
+            $(`#${idSelect}`).append('<option selected>Selecione uma opção</option>')
+            lista.forEach(opcao => {
+                if (idSelect === 'tiposB') {
+                    $option = $('<option>', {
+                        value: opcao.Id,
+                        text: opcao.DescTipoB
+                    });
+                } else {
+                    $option = $('<option>', {
+                        value: opcao.Id,
+                        text: opcao.DescTipoA
+                    });
+                }
+                $(`#${idSelect}`).append($option)
+            });
+        }
+        $('#tiposA').on('change', function() {
+            const valorSelecionado = $(this).val();
+            var listBFiltrada = listaB.filter(function(item){
+                return item.IdTipoA === parseInt(valorSelecionado);
+            });
+            $(`#tiposB`).empty();
+            loadLista(listBFiltrada, 'tiposB');
+        });
+        $('#clearFilters').on('click', function() {
+            $(`#tiposB`).empty();
+            $(`#tiposA`).empty();
+            loadLista(listaA,'tiposA')
+            loadLista(listaB,'tiposB')
+        });
+    </script>
+}

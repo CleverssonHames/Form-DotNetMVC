@@ -1,0 +1,37 @@
+@model DropDownViewModel
+
+@{
+    ViewData["Title"] = "Dropdown2";
+}
+<h>Dropdowns</h>
+<div class="mt-5">
+    <div class="mb-3">
+        <label for="tiposA" class="form-label">Tipos A</label>
+        <select class="form-select" id="tiposA">
+            <option selected>Selecione uma opção</option>
+            @foreach (var la in Model.tipoAFiltrada)
+            {
+                <option value="@la.Id">@la.DescTipoA</option>
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="tiposB" class="form-label">Tipos B</label>
+        <select class="form-select" id="tiposB">
+            <option selected>Selecione uma opção</option>
+            @foreach (var lb in Model.tipoBFiltrada)
+            {
+                <option value="@lb.Id">@lb.DescTipoB</option>
+            }
+        </select>
+    </div>
+    <button type="button" class="btn btn-danger" id="clearFilters">Limpar Filtro</button>
+</div>
+@section Scripts 
+{
+    <script>
+        
+    </script>    
+    
+}

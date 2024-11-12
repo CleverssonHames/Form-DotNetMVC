@@ -1,0 +1,36 @@
+﻿@model UserViewModel
+
+@{
+    ViewData["Title"] = "Cadastro";
+}
+
+<div class="container">
+    <h1 class="display-4">Usuários</h1>
+    @if (Model.status && !string.IsNullOrEmpty(Model.status_descricao))
+    {
+        <p class="alert alert-danger">@Model.status_descricao</p>
+    }  
+    @Html.Partial("PartialView/_AddUserPartialView")
+</div>
+@section Scripts
+{
+    <script>
+        $(() => {console.log('teste')});
+        function handlesubmit() {
+            $.ajax({
+                type: "POST",
+                url: "/Home/SetUser",
+                data: $('#form').serialize(),
+                success: function (resultado) {
+                    console.log(resultado)
+                    $('#cadastrar').html(resultado);
+
+                },
+                error: function (){
+                    alert('Erro ao processar a solicitação');
+                }
+            })
+        };
+    </script>
+}
+
