@@ -140,3 +140,7 @@ C:\Users\hames\source\repos\Formulario\FormWeb\bin\Debug\net8.0\runtimes\win\lib
 C:\Users\hames\source\repos\Formulario\FormWeb\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\hames\source\repos\Formulario\FormWeb\obj\Debug\net8.0\FormWeb.csproj.AssemblyReference.cache
 C:\Users\hames\source\repos\Formulario\FormWeb\obj\Debug\net8.0\FormWeb.csproj.Up2Date
+C:\Users\hames\source\repos\Formulario\FormWeb\bin\Debug\net8.0\FormWeb.staticwebassets.endpoints.json
+C:\Users\hames\source\repos\Formulario\FormWeb\obj\Debug\net8.0\FormWeb.sourcelink.json
+C:\Users\hames\source\repos\Formulario\FormWeb\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\hames\source\repos\Formulario\FormWeb\obj\Debug\net8.0\staticwebassets\msbuild.FormWeb.Microsoft.AspNetCore.StaticWebAssetEndpoints.props

@@ -2,20 +2,21 @@
 
 @{
     ViewData["Title"] = "Dropdown2";
+    var listaBSerializada = System.Text.Json.JsonSerializer.Serialize(Model.LsTipoBs);
 }
 <h>Dropdowns</h>
+
 <div class="mt-5">
     <div class="mb-3">
         <label for="tiposA" class="form-label">Tipos A</label>
-        <select class="form-select" id="tiposA">
+        <select class="form-select" id="tiposA" name="idfiltro">
             <option selected>Selecione uma opção</option>
-            @foreach (var la in Model.tipoAFiltrada)
+            @foreach (var la in Model.LsTipoAs)
             {
                 <option value="@la.Id">@la.DescTipoA</option>
             }
         </select>
     </div>
-
     <div class="mb-3">
         <label for="tiposB" class="form-label">Tipos B teste</label>
         <select class="form-select" id="tiposB">
@@ -26,12 +27,36 @@
             }
         </select>
     </div>
-    <button type="button" class="btn btn-danger" id="clearFilters">Limpar Filtro</button>
+    <a asp-controller="Home" asp-action="DropDown2" class="btn btn-danger" id="clearFilters">Limpar Filtro</a>
 </div>
-@section Scripts 
+@section Scripts
 {
     <script>
-        
-    </script>    
-    
+        $('#tiposA').on('change', function (){
+            const valorSelecionado = $(this).val();
+            $.ajax({
+                type: "POST",
+                url: '/Home/DropDown2',
+                data: {
+                    optionsB: @Html.Raw(listaBSerializada),
+                    id: valorSelecionado
+                },
+                success: function (data){
+                    $(`#tiposB`).empty();
+                    let $option;
+                    data.forEach(item => {
+                        $option = $('<option>', {
+                            value: item.id,
+                            text: item.descTipoB
+                        });
+                        $('#tiposB').append($option)
+                    })
+                },                           
+                error: function (xhr, status, error){
+                    console.error('Erro na requisição:', error);
+                }
+            })
+        });
+
+    </script>
 }

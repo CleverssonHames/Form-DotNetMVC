@@ -2,6 +2,7 @@ using FormWeb.Models;
 using FormWeb.Services.Users;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Text.Encodings.Web;
 
 namespace FormWeb.Controllers
 {
@@ -56,24 +57,26 @@ namespace FormWeb.Controllers
             var ret = _userService.UpdateUser(model);
             return RedirectToAction(nameof(Index));
         }
-
+        
+        [HttpGet]
         public ActionResult DropDownAninhado()
         {
             var ret = _userService.DropDown();
             return View(ret);
         }
-
+        
+        [HttpGet]
         public ActionResult DropDown2()
         {
             var ret = _userService.DropDow2();
             return View(ret);
         }
         
-        
-        public ActionResult FiltrandoDropDown(TiposViewModel modelTipos, int IdTipoA)
+        [HttpPost]
+        public ActionResult DropDown2(List<TipoB> optionsB, int id)
         {
-            var ret = _userService.FiltrandoDropDownB(modelTipos,IdTipoA);
-            return View("DropDown2",ret);
+            var ret = _userService.FiltrandoDropDownB(optionsB, id);
+            return Json(ret);
         }
 
     }

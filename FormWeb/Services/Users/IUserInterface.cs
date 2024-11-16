@@ -11,6 +11,6 @@ namespace FormWeb.Services.Users
         public retornoPadrao UpdateUser(UserModel model);
         public TiposViewModel DropDown();
         public DropDownViewModel  DropDow2();
-        public DropDownViewModel FiltrandoDropDownB(TiposViewModel modelTipos, int IdTipoA);
+        public List<TipoB> FiltrandoDropDownB(List<TipoB> optionsB, int IdTipoA);
     }
 }

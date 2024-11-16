@@ -87,7 +87,6 @@ namespace FormWeb.Services.Users
 
             return ret;
         }
-
         public TiposViewModel DropDown()
         {
             TiposViewModel tipos = new TiposViewModel();
@@ -97,7 +96,6 @@ namespace FormWeb.Services.Users
 
             return tipos;
         }
-
         public DropDownViewModel DropDow2()
         {
             DropDownViewModel model = new DropDownViewModel();
@@ -105,15 +103,12 @@ namespace FormWeb.Services.Users
             model.LsTipoAs = _context.TipoAs.ToList();
             model.LsTipoBs = _context.TipoBs.ToList();
             //Ação realizada no serviço
-            model.tipoAFiltrada = model.LsTipoAs;
             model.tipoBFiltrada = model.LsTipoBs;
             return model;
         }
-
-        public DropDownViewModel FiltrandoDropDownB(TiposViewModel modelTipos, int IdTipoA)
+        public List<TipoB> FiltrandoDropDownB(List<TipoB> optionsB, int IdTipoA)
         {
-            DropDownViewModel filtros = new DropDownViewModel();
-            filtros.tipoBFiltrada = modelTipos.LsTipoBs.Where(a => a.Id == IdTipoA).ToList();
+            List<TipoB> filtros = optionsB.Where(a => a.IdTipoA == IdTipoA).ToList();
             return filtros;
         }
     }

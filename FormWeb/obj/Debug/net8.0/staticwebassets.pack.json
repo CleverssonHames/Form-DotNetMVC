@@ -2,7 +2,7 @@
   "Files": [
     {
       "Id": "C:\\Users\\hames\\source\\repos\\Formulario\\FormWeb\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\FormWeb.bundle.scp.css",
-      "PackagePath": "staticwebassets\\FormWeb.bundle.scp.css"
+      "PackagePath": "staticwebassets\\FormWeb.0e6hqvl94v.bundle.scp.css"
     },
     {
       "Id": "C:\\Users\\hames\\source\\repos\\Formulario\\FormWeb\\wwwroot\\css\\site.css",
@@ -251,6 +251,10 @@
     {
       "Id": "C:\\Users\\hames\\source\\repos\\Formulario\\FormWeb\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.FormWeb.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.FormWeb.Microsoft.AspNetCore.StaticWebAssets.props",
